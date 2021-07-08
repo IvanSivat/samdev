@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="footer">
+            <container name="footer.content.wrapper" htmlTag="div" htmlClass="footer-content-wrapper" before="-">
+                <container name="footer.links.wrapper" htmlTag="div" htmlClass="footer-links-wrapper" before="-">
+                    <block class="Magento\Cms\Block\Block" name="footer.links">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_links</argument>
+                        </arguments>
+                    </block>
+                </container>
+                <container name="footer.social.links.wrapper" htmlTag="div" htmlClass="footer-social-links"
+                           after="footer.links.wrapper">
+                    <block class="Magento\Cms\Block\Block" name="social.links">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer_social_links</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="footer-container">
+            <container name="footer.bottom.links" htmlTag="div" htmlClass="footer-bottom-links" after="-">
+                <container name="footer.bottom.links.wrapper" htmlTag="div" htmlClass="footer-bottom-links-wrapper">
+                    <container name="footer.payment.list" htmlTag="div" htmlClass="footer-payment-list">
+                        <block class="Magento\Cms\Block\Block" name="payment.list">
+                            <arguments>
+                                <argument name="block_id" xsi:type="string">payment_list</argument>
+                            </arguments>
+                        </block>
+                    </container>
+
+                    <block name="footer.made.by.mobile" template="Magento_Theme::html/made-by.phtml" as="made_by"/>
+                </container>
+            </container>
+        </referenceContainer>
+
+        <move element="copyright" destination="footer.bottom.links.wrapper" before="-"/>
+
+        <referenceBlock name="footer_links" remove="true"/>
+        <referenceBlock name="form.subscribe" remove="true"/>
+        <referenceBlock name="report.bugs" remove="true"/>
+    </body>
+</page>

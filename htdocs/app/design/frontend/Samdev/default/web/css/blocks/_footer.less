@@ -1,0 +1,192 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    div.footer.content {
+        max-width: 1440px;
+        border-top: none;
+        padding-bottom: 50px;
+    }
+
+    .footer.content {
+        .lib-css(color, @color-white);
+
+        .footer-content-wrapper {
+            display: flex;
+            justify-content: space-between;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        .footer-social-links {
+            width: 15%;
+        }
+    }
+
+    .footer-links-wrapper {
+        display: flex;
+        width: 81%;
+    }
+
+    .footer-links-item {
+        width: 33%;
+        box-sizing: border-box;
+        padding: 0 20px 0 0;
+
+        ul {
+            & > li {
+                .lib-font-size(16);
+                margin: 0 0 24px !important;
+
+                a {
+                    .lib-css(color, @color-white);
+                }
+            }
+        }
+    }
+
+    .footer.content .footer-social-links {
+        ul {
+            & > li {
+                .lib-font-size(16);
+                position: relative;
+                margin: 0 0 24px;
+                padding: 0 0 0 25px;
+
+                img {
+                    position: absolute;
+                    left: 0;
+                }
+
+                a {
+                    .lib-css(color, @color-white);
+                }
+            }
+        }
+    }
+
+    .footer-social-links h2,
+    .footer-links-item h2 {
+        margin: 0 0 28px;
+        .lib-css(font-weight, @font-weight__bold);
+        .lib-font-size(22);
+        .lib-line-height(35);
+    }
+
+    .footer-bottom-links-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1440px;
+        width: 100%;
+        padding: 0 20px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .footer-bottom-links {
+        .lib-css(background, @color-white);
+        .lib-css(color, @color-black);
+        padding: 15px 0;
+
+        .copyright,
+        .made-by {
+            .lib-font-size(16);
+        }
+    }
+
+    .footer-payment-list {
+        p {
+            margin: 0;
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .footer.content {
+        div.footer-content-wrapper {
+            display: block;
+        }
+
+        div.footer-social-links {
+            width: 100%;
+        }
+    }
+
+    div.footer-links-wrapper {
+        width: 100%;
+        display: block;
+
+        .footer-links-item {
+            width: 100%;
+            padding: 0;
+
+            h2 {
+                position: relative;
+                width: 100%;
+
+                &::after {
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+
+                .lib-icon-font(
+                    @icon-down,
+                    @_icon-font-size: 45px,
+                    @_icon-font-color: @color-white,
+                    @_icon-font-position: after
+                );
+
+                &[aria-expanded="false"] {
+                    .lib-icon-font-symbol(@icon-up);
+                }
+            }
+        }
+    }
+
+    div.footer.content div.footer-social-links {
+        h2 {
+            display: none;
+        }
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+
+            li {
+                .lib-font-size(14);
+                margin: 0;
+            }
+        }
+    }
+
+    div.footer-bottom-links-wrapper {
+        flex-wrap: wrap;
+        align-items: flex-start;
+
+        .footer-payment-list {
+            order: -1;
+        }
+
+        .copyright {
+            width: 60%;
+        }
+
+        .made-by {
+            width: 40%;
+            text-align: right;
+        }
+
+        .copyright,
+        .made-by {
+            .lib-font-size(12);
+        }
+    }
+}
