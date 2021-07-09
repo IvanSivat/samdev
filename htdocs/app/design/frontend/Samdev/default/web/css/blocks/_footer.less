@@ -107,8 +107,13 @@
 //  Mobile
 //  _____________________________________________
 
-.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     .footer.content {
+        .page-footer & {
+            margin: 0;
+            padding: 7px 0;
+        }
+
         div.footer-content-wrapper {
             display: block;
         }
@@ -126,26 +131,32 @@
             width: 100%;
             padding: 0;
 
+            &:not(:last-child) {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
             h2 {
                 position: relative;
                 width: 100%;
+                margin: 0;
+                padding: 14px 20px;
+                box-sizing: border-box;
+                .lib-font-size(16);
 
                 &::after {
                     position: absolute;
-                    right: 0;
+                    right: 20px;
                     top: 50%;
                     transform: translateY(-50%);
+                    content: '+';
+                    width: 20px;
+                    height: 20px;
+                    line-height: 20px;
+                    .lib-font-size(30px);
                 }
 
-                .lib-icon-font(
-                    @icon-down,
-                    @_icon-font-size: 45px,
-                    @_icon-font-color: @color-white,
-                    @_icon-font-position: after
-                );
-
                 &[aria-expanded="false"] {
-                    .lib-icon-font-symbol(@icon-up);
+                    content: '-';
                 }
             }
         }
@@ -159,6 +170,7 @@
         ul {
             display: flex;
             justify-content: space-between;
+            padding: 20px;
 
             li {
                 .lib-font-size(14);
@@ -170,9 +182,12 @@
     div.footer-bottom-links-wrapper {
         flex-wrap: wrap;
         align-items: flex-start;
+        justify-content: center;
+        box-sizing: border-box;
 
         .footer-payment-list {
             order: -1;
+            margin: 0 0 10px;
         }
 
         .copyright {
